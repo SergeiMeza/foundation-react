@@ -1,14 +1,20 @@
 import { useState } from 'react'
-import useDebounce from '../lib/hooks/useDebounce'
+import useDebounce from '../lib/hooks/foundation/useDebounce'
 
-export const DebounceComponent = () => {
-  const [count, setCount] = useState(10)
-  useDebounce(() => alert(count), 1000, [count])
+export default () => {
+  const [value, setValue] = useState<string>()
+  const debouncedValue = useDebounce(value, { wait: 500 })
 
   return (
     <div>
-      <div>{count}</div>
-      <button onClick={() => setCount((c) => c + 1)}>Increment</button>
+      <p>DebouncedValue will change after the input ends 500ms.</p>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder='Typed value'
+        style={{ width: 280 }}
+      />
+      <p style={{ marginTop: 16 }}>DebouncedValue: {debouncedValue}</p>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useFetch from '../lib/hooks/useFetch'
+import useFetch from '../lib/hooks/foundation/useFetch'
 
 export const FetchComponent = () => {
   const [id, setId] = useState(1)

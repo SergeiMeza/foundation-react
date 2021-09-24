@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useStateWithHistory from '../lib/hooks/useStateWithHistory'
+import useStateWithHistory from '../lib/hooks/foundation/useStateWithHistory'
 
 export const StateWithHistoryComponent = () => {
   const [count, setCount, { history, pointer, back, forward, go }] =

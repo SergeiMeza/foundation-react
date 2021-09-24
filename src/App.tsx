@@ -1,9 +1,9 @@
-import { ToggleComponent } from './components/ToggleComponent'
+import KeyPress4Component from './components/KeyPress4Component'
 
 function App() {
   return (
     <div>
-      <ToggleComponent />
+      <KeyPress4Component />
     </div>
   )
 }

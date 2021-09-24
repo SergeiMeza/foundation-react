@@ -1,4 +1,4 @@
-import useAsync from '../lib/hooks/useAsync'
+import useAsync from '../lib/hooks/foundation/useAsync'
 
 export const AsyncComponent = () => {
   const { loading, error, value } = useAsync(() => {

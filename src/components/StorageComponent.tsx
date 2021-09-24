@@ -1,4 +1,7 @@
-import { useLocalStorage, useSessionStorage } from '../lib/hooks/useStorage'
+import {
+  useLocalStorage,
+  useSessionStorage,
+} from '../lib/hooks/foundation/useStorage'
 
 export const StorageComponent = () => {
   const [name, setName, removeName] = useSessionStorage('name', 'Meza')

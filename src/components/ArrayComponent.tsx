@@ -1,5 +1,5 @@
 import React from 'react'
-import useArray from '../lib/hooks/useArray'
+import useArray from '../lib/hooks/foundation/useArray'
 
 export const ArrayComponent = () => {
   const { array, set, push, remove, filter, update, clear } = useArray([

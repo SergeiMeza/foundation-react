@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useUpdateEffect from '../lib/hooks/useUpdateEffect'
+import useUpdateEffect from '../lib/hooks/foundation/useUpdateEffect'
 
 export const UpdateEffectComponent = () => {
   const [count, setCount] = useState(10)

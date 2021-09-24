@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import usePrevious from '../lib/hooks/usePrevious'
+import usePrevious from '../lib/hooks/foundation/usePrevious'
 
 export const PreviousComponent = () => {
   const [count, setCount] = useState(0)

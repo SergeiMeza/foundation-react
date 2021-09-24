@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useTimeout from '../lib/hooks/useTimeout'
+import useTimeout from '../lib/hooks/foundation/useTimeout'
 
 export const TimeoutComponent = () => {
   const [count, setCount] = useState(10)
