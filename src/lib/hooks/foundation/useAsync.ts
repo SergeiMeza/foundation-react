@@ -19,7 +19,7 @@ const useAsync = (callback: () => Promise<any>, dependencies: any[] = []) => {
     callbackMemoized()
   }, [callbackMemoized])
 
-  return { loading, error, value }
+  return { loading, error, value, setError, setValue }
 }
 
 export default useAsync
