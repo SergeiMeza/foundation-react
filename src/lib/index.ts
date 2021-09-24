@@ -29,6 +29,8 @@ import useEventListener from './hooks/ui/useEventListener'
 import useFavicon from './hooks/ui/useFavicon'
 import useFullscreen from './hooks/ui/useFullscreen'
 import useHover from './hooks/ui/useHover'
+import useKeyPress from './hooks/ui/useKeyPress'
+import useTitle from './hooks/ui/useTitle'
 
 export {
   useArray,
@@ -60,4 +62,6 @@ export {
   useFavicon,
   useFullscreen,
   useHover,
+  useKeyPress,
+  useTitle,
 }
