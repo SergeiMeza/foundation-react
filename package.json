@@ -2,6 +2,18 @@
   "name": "@sergeimeza/foundation-react",
   "version": "1.1.0",
   "private": false,
+  "description": "Personal react hooks library",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "repository": "https://github.com/SergeiMeza/foundation-react.git",
+  "author": "SergeiMeza <sergeimeza@gmail.com>",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": false
+  },
   "scripts": {
     "start": "react-scripts start",
     "build:clean": "rimraf lib",
@@ -53,17 +65,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all",
-    "semi": false
-  },
-  "description": "Personal react hooks library",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/esm/index.d.ts",
-  "repository": "https://github.com/SergeiMeza/foundation-react.git",
-  "author": "SergeiMeza <sergeimeza@gmail.com>",
-  "license": "MIT"
+  }
 }
