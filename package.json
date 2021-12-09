@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build:clean": "rimraf lib",
-    "compile": "yarn build:clean && tsc --project tsconfig.compile.json",
+    "compile": "yarn build:clean && tsc --project tsconfig.compile.cjs.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
