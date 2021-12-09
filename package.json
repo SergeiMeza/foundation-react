@@ -60,8 +60,9 @@
     "semi": false
   },
   "description": "Personal react hooks library",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
   "repository": "https://github.com/SergeiMeza/foundation-react.git",
   "author": "SergeiMeza <sergeimeza@gmail.com>",
   "license": "MIT"
