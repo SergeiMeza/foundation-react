@@ -1,6 +1,6 @@
 {
   "name": "@sergeimeza/foundation-react",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "private": false,
   "description": "Personal react hooks library",
   "main": "lib/cjs/index.js",
