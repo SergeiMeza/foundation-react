@@ -4,14 +4,14 @@ export const useLocalStorage = (
   key: string,
   defaultValue: any,
 ): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, window.localStorage)
+  return useStorage(key, defaultValue, window?.localStorage)
 }
 
 export const useSessionStorage = (
   key: string,
   defaultValue: any,
 ): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, window.sessionStorage)
+  return useStorage(key, defaultValue, window?.sessionStorage)
 }
 
 const useStorage = (
@@ -19,7 +19,9 @@ const useStorage = (
   defaultValue,
   storageObject,
 ): readonly [any, React.Dispatch<any>, () => void] => {
-  const [value, setValue] = useState(() => {
+  const [value, setValue] = useState<any>()
+
+  useEffect(() => {
     const jsonValue = storageObject.getItem(key)
     if (jsonValue != null) return JSON.parse(jsonValue)
 
@@ -28,9 +30,10 @@ const useStorage = (
     } else {
       return defaultValue
     }
-  })
+  }, [])
 
   useEffect(() => {
+    if (!storageObject) return
     if (value === undefined) return storageObject.removeItem(key)
     storageObject.setItem(key, JSON.stringify(value))
   }, [key, value, storageObject])
