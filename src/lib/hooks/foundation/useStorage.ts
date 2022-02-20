@@ -4,39 +4,53 @@ export const useLocalStorage = (
   key: string,
   defaultValue: any,
 ): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, window?.localStorage)
+  return useStorage(key, defaultValue, StorageType.LOCAL)
 }
 
 export const useSessionStorage = (
   key: string,
   defaultValue: any,
 ): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, window?.sessionStorage)
+  return useStorage(key, defaultValue, StorageType.SESSION)
+}
+
+enum StorageType {
+  SESSION = 'session',
+  LOCAL = 'local',
 }
 
 const useStorage = (
   key,
   defaultValue,
-  storageObject,
+  storageType: StorageType,
 ): readonly [any, React.Dispatch<any>, () => void] => {
   const [value, setValue] = useState<any>()
 
   useEffect(() => {
+    let storageObject =
+      storageType === StorageType.LOCAL
+        ? window.localStorage
+        : window.sessionStorage
     const jsonValue = storageObject.getItem(key)
-    if (jsonValue != null) return JSON.parse(jsonValue)
-
-    if (typeof defaultValue === 'function') {
-      return defaultValue()
+    if (jsonValue != null) {
+      setValue(JSON.parse(jsonValue))
     } else {
-      return defaultValue
+      if (typeof defaultValue === 'function') {
+        return defaultValue()
+      } else {
+        return defaultValue
+      }
     }
   }, [])
 
   useEffect(() => {
-    if (!storageObject) return
+    let storageObject =
+      storageType === StorageType.LOCAL
+        ? window.localStorage
+        : window.sessionStorage
     if (value === undefined) return storageObject.removeItem(key)
     storageObject.setItem(key, JSON.stringify(value))
-  }, [key, value, storageObject])
+  }, [key, value])
 
   const remove = useCallback(() => {
     setValue(undefined)
