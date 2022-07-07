@@ -1,6 +1,6 @@
 {
   "name": "@sergeimeza/foundation-react",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "private": false,
   "description": "Personal react hooks library",
   "main": "lib/cjs/index.js",
@@ -29,8 +29,7 @@
     "screenfull": "^5.1.0"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-dom": "*"
+    "react": ">= 18.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "latest",
