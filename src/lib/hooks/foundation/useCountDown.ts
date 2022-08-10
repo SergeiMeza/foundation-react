@@ -4,12 +4,18 @@ import usePersistFn from './usePersistFn'
 
 export type TDate = Date | number | string | undefined
 
+/**
+ * @description useCountdown hook options.
+ */
 export type Options = {
   targetDate?: TDate
   interval?: number
   onEnd?: () => void
 }
 
+/**
+ * @description Formatted response
+ */
 export interface FormattedRes {
   days: number
   hours: number
@@ -18,6 +24,9 @@ export interface FormattedRes {
   milliseconds: number
 }
 
+/**
+ * @description Calculate time left.
+ */
 const calcLeft = (t?: TDate) => {
   if (!t) {
     return 0
@@ -31,6 +40,9 @@ const calcLeft = (t?: TDate) => {
   return left
 }
 
+/**
+ * @description Parse milliseconds to days, hours, minutes, seconds, milliseconds.
+ */
 const parseMs = (milliseconds: number): FormattedRes => {
   return {
     days: Math.floor(milliseconds / 86400000),
@@ -40,14 +52,15 @@ const parseMs = (milliseconds: number): FormattedRes => {
     milliseconds: Math.floor(milliseconds) % 1000,
   }
 }
+
 /**
- * A hook for countdown management.
+ * An elegant hook for countdown management.
  */
-const useCountDown = (options?: Options) => {
+const useCountdown = (options?: Options) => {
   const { targetDate, interval = 1000, onEnd } = options || {}
 
   const [target, setTargetDate] = useState<TDate>(targetDate)
-  const [timeLeft, setTimeLeft] = useState(() => calcLeft(target))
+  const [timeLeft, setTimeLeft] = useState<number>(() => calcLeft(target))
 
   const onEndPersistFn = usePersistFn(() => {
     if (onEnd) {
@@ -75,7 +88,7 @@ const useCountDown = (options?: Options) => {
     }, interval)
 
     return () => clearInterval(timer)
-  }, [target, interval])
+  }, [target, interval, onEndPersistFn])
 
   const formattedRes = useMemo(() => {
     return parseMs(timeLeft)
@@ -86,4 +99,4 @@ const useCountDown = (options?: Options) => {
   return props
 }
 
-export default useCountDown
+export default useCountdown

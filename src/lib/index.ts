@@ -1,7 +1,7 @@
 import useArray from './hooks/foundation/useArray'
 import useAsync from './hooks/foundation/useAsync'
 import useBoolean from './hooks/foundation/useBoolean'
-import useCountDown from './hooks/foundation/useCountDown'
+import useCountdown from './hooks/foundation/useCountdown'
 import useCounter from './hooks/foundation/useCounter'
 import useCreation from './hooks/foundation/useCreation'
 import useDebounce from './hooks/foundation/useDebounce'
@@ -36,7 +36,7 @@ export {
   useArray,
   useAsync,
   useBoolean,
-  useCountDown,
+  useCountdown,
   useCounter,
   useCreation,
   useDebounce,

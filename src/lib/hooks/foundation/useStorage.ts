@@ -1,60 +1,66 @@
 import { useCallback, useState, useEffect } from 'react'
 
-export const useLocalStorage = (
-  key: string,
-  defaultValue: any,
-): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, StorageType.LOCAL)
-}
-
-export const useSessionStorage = (
-  key: string,
-  defaultValue: any,
-): readonly [any, React.Dispatch<any>, () => void] => {
-  return useStorage(key, defaultValue, StorageType.SESSION)
-}
-
 enum StorageType {
   SESSION = 'session',
   LOCAL = 'local',
 }
 
-const useStorage = (
-  key,
-  defaultValue,
+const useStorage = <T>(
+  key: string,
+  defaultValue: T | (() => T),
   storageType: StorageType,
-): readonly [any, React.Dispatch<any>, () => void] => {
-  const [value, setValue] = useState<any>()
+): readonly [T | undefined, React.Dispatch<T | undefined>, () => void] => {
+  const [value, setValue] = useState<T>()
 
   useEffect(() => {
     let storageObject =
       storageType === StorageType.LOCAL
         ? window.localStorage
         : window.sessionStorage
+
     const jsonValue = storageObject.getItem(key)
-    if (jsonValue != null) {
+
+    if (jsonValue !== null) {
       setValue(JSON.parse(jsonValue))
     } else {
       if (typeof defaultValue === 'function') {
-        return defaultValue()
+        setValue((defaultValue as () => T)())
       } else {
-        return defaultValue
+        setValue(defaultValue)
       }
     }
-  }, [])
+  }, [defaultValue, key, storageType])
 
   useEffect(() => {
     let storageObject =
       storageType === StorageType.LOCAL
         ? window.localStorage
         : window.sessionStorage
-    if (value === undefined) return storageObject.removeItem(key)
-    storageObject.setItem(key, JSON.stringify(value))
-  }, [key, value])
+
+    if (value === undefined || value === null) {
+      storageObject.removeItem(key)
+    } else {
+      storageObject.setItem(key, JSON.stringify(value))
+    }
+  }, [key, value, storageType])
 
   const remove = useCallback(() => {
     setValue(undefined)
   }, [])
 
   return [value, setValue, remove] as const
+}
+
+export const useLocalStorage = <T>(
+  key: string,
+  defaultValue: T,
+): readonly [T | undefined, React.Dispatch<T | undefined>, () => void] => {
+  return useStorage<T>(key, defaultValue, StorageType.LOCAL)
+}
+
+export const useSessionStorage = <T>(
+  key: string,
+  defaultValue: T,
+): readonly [T | undefined, React.Dispatch<T | undefined>, () => void] => {
+  return useStorage(key, defaultValue, StorageType.SESSION)
 }

@@ -1,9 +1,9 @@
-import KeyPress4Component from './components/KeyPress4Component'
+import { StorageComponent } from './components/StorageComponent'
 
 function App() {
   return (
     <div>
-      <KeyPress4Component />
+      <StorageComponent />
     </div>
   )
 }

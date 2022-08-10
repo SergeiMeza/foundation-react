@@ -1,11 +1,17 @@
 import { useMemo, useState } from 'react'
 import useCreation from './useCreation'
 
+/**
+ * @description useCount hook options.
+ */
 export interface Options {
   min?: number
   max?: number
 }
 
+/**
+ * @description useCount hook actions.
+ */
 export interface Actions {
   inc: (delta?: number) => void
   dec: (delta?: number) => void

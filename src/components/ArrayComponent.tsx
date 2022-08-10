@@ -12,7 +12,7 @@ export const ArrayComponent = () => {
       <button onClick={() => push(7)}>Add 7</button>
       <button onClick={() => update(1, 9)}>Change Second Element to 9</button>
       <button onClick={() => remove(1)}>Remove Second Element</button>
-      <button onClick={() => filter((n: any) => n < 4)}>
+      <button onClick={() => filter((n) => n < 4)}>
         Keep Numbers Less Than 4
       </button>
       <button onClick={() => set([1, 2])}>Set To 1, 2</button>

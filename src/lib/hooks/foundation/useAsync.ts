@@ -1,23 +1,34 @@
 import { useCallback, useEffect, useState } from 'react'
 
-const useAsync = (callback: () => Promise<any>, dependencies: any[] = []) => {
+/**
+ * @description Convenient hook for managing an async operation in react.
+ * @param asyncFunction The async function to call.
+ * @param dependencies An array of dependencies to use for memoization.
+ */
+const useAsync = <V>(
+  asyncFunction: () => Promise<V>,
+  dependencies: any[] = [],
+) => {
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<any>()
-  const [value, setValue] = useState<any>()
+  const [error, setError] = useState<unknown>()
+  const [value, setValue] = useState<V>()
 
-  const callbackMemoized = useCallback(() => {
+  const asyncFunctionMemoized = useCallback(() => {
     setLoading(true)
     setError(undefined)
     setValue(undefined)
-    callback()
+
+    asyncFunction()
       .then(setValue)
       .catch(setError)
       .finally(() => setLoading(false))
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies)
 
   useEffect(() => {
-    callbackMemoized()
-  }, [callbackMemoized])
+    asyncFunctionMemoized()
+  }, [asyncFunctionMemoized])
 
   return { loading, error, value, setError, setValue }
 }

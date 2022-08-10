@@ -8,7 +8,7 @@ export interface Actions {
 }
 
 /**
- * A hook that elegantly manages boolean values.
+ * @description A hook that elegantly manages boolean values.
  */
 export default function useBoolean(defaultValue = false): [boolean, Actions] {
   const [state, { toggle }] = useToggle(defaultValue)

@@ -1,17 +1,20 @@
 import { useState } from 'react'
 
-const useArray = (defaultValue: any[]) => {
-  const [array, setArray] = useState<any[]>(defaultValue)
+/**
+ * @description Convenient hook for managing an array of values in react.
+ */
+const useArray = <T>(defaultValue: T[]) => {
+  const [array, setArray] = useState<T[]>(defaultValue)
 
-  function push(element: any) {
+  function push(element: T) {
     setArray((a) => [...a, element])
   }
 
-  function filter(callback: any) {
+  function filter(callback: (value: T, index: number, array: T[]) => unknown) {
     setArray((a) => a.filter(callback))
   }
 
-  function update(index: number, newElement: any) {
+  function update(index: number, newElement: T) {
     setArray((a) => [
       ...a.slice(0, index),
       newElement,

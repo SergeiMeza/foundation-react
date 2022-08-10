@@ -3,7 +3,7 @@ import { DebounceOptions } from './DebounceOptions'
 import useDebounceFn from './useDebounceFn'
 
 /**
- * A hook that handle the debounce value.
+ * @description A hook that handle the debounce value.
  */
 export default function useDebounce<T>(value: T, options?: DebounceOptions) {
   const [debounced, setDebounced] = useState(value)
@@ -14,7 +14,7 @@ export default function useDebounce<T>(value: T, options?: DebounceOptions) {
 
   useEffect(() => {
     run()
-  }, [value])
+  }, [run, value])
 
   return debounced
 }

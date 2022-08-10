@@ -1,21 +1,28 @@
+import { StrictMode } from 'react'
 import {
   useLocalStorage,
   useSessionStorage,
 } from '../lib/hooks/foundation/useStorage'
 
-export const StorageComponent = () => {
-  const [name, setName, removeName] = useSessionStorage('name', 'Meza')
-  const [age, setAge, removeAge] = useLocalStorage('age', 20)
+export const StorageComponent = () => (
+  <StrictMode>
+    <InnerStorageComponent />
+  </StrictMode>
+)
+
+const InnerStorageComponent = () => {
+  const [name, setName, removeName] = useLocalStorage('name', 'Meza')
 
   return (
     <div>
-      <div>
-        {name} - {age}
-      </div>
-      <button onClick={() => setName('John')}>Set Name</button>
-      <button onClick={() => setAge(40)}>Set Age</button>
-      <button onClick={removeName}>Remove Name</button>
-      <button onClick={removeAge}>Remove Age</button>
+      <StrictMode>
+        <div>
+          <h1>Local Storage</h1>
+          <div>name: {name}</div>
+          <button onClick={() => setName('Rodriguez')}>Set Name</button>
+          <button onClick={removeName}>Remove Name</button>
+        </div>
+      </StrictMode>
     </div>
   )
 }
