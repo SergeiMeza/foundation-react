@@ -1,2 +1,3 @@
-export declare const useLocalStorage: (key: string, defaultValue: any) => readonly [any, React.Dispatch<any>, () => void];
-export declare const useSessionStorage: (key: string, defaultValue: any) => readonly [any, React.Dispatch<any>, () => void];
+/// <reference types="react" />
+export declare const useLocalStorage: <T>(key: string, defaultValue: T) => readonly [T | undefined, import("react").Dispatch<T | undefined>, () => void];
+export declare const useSessionStorage: <T>(key: string, defaultValue: T) => readonly [T | undefined, import("react").Dispatch<T | undefined>, () => void];

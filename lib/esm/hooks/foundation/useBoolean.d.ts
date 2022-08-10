@@ -4,6 +4,6 @@ export interface Actions {
     toggle: (value?: boolean | undefined) => void;
 }
 /**
- * A hook that elegantly manages boolean values.
+ * @description A hook that elegantly manages boolean values.
  */
 export default function useBoolean(defaultValue?: boolean): [boolean, Actions];

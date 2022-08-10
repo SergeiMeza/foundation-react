@@ -1,7 +1,7 @@
 import useArray from './hooks/foundation/useArray';
 import useAsync from './hooks/foundation/useAsync';
 import useBoolean from './hooks/foundation/useBoolean';
-import useCountDown from './hooks/foundation/useCountDown';
+import useCountdown from './hooks/foundation/useCountdown';
 import useCounter from './hooks/foundation/useCounter';
 import useCreation from './hooks/foundation/useCreation';
 import useDebounce from './hooks/foundation/useDebounce';
@@ -28,4 +28,4 @@ import useFullscreen from './hooks/ui/useFullscreen';
 import useHover from './hooks/ui/useHover';
 import useKeyPress from './hooks/ui/useKeyPress';
 import useTitle from './hooks/ui/useTitle';
-export { useArray, useAsync, useBoolean, useCountDown, useCounter, useCreation, useDebounce, useDebounceEffect, useDebounceFn, useFetch, useInterval, useMount, usePersistFn, usePrevious, useStateWithHistory, useStateWithHistoryTravel, useLocalStorage, useSessionStorage, useTimeout, useToggle, useUnmount, useUpdateEffect, useClickAway, useDrag, useDrop, useEventListener, useFavicon, useFullscreen, useHover, useKeyPress, useTitle, };
+export { useArray, useAsync, useBoolean, useCountdown, useCounter, useCreation, useDebounce, useDebounceEffect, useDebounceFn, useFetch, useInterval, useMount, usePersistFn, usePrevious, useStateWithHistory, useStateWithHistoryTravel, useLocalStorage, useSessionStorage, useTimeout, useToggle, useUnmount, useUpdateEffect, useClickAway, useDrag, useDrop, useEventListener, useFavicon, useFullscreen, useHover, useKeyPress, useTitle, };
