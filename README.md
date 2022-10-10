@@ -11,6 +11,10 @@ You can find the non-ui related hooks [here](https://github.com/SergeiMeza/found
 
 Additionally, you can find the ui related hooks [here](https://github.com/SergeiMeza/foundation-react/tree/main/src/lib/hooks/ui).
 
+#### React.js (Next.js) related utils
+
+You can find convenient methods when implementing a react application in Next.js [here](https://github.com/SergeiMeza/foundation-react/tree/main/src/lib/utils).
+
 
 ## About contributions
 
